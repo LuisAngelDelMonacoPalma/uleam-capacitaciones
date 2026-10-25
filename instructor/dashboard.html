@@ -1,0 +1,20 @@
+<!-- ==================== VISTA: PANEL DEL INSTRUCTOR ==================== -->
+<section id="view-instructor" class="space-y-6 hidden">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-4 gap-4">
+        <h2 class="text-2xl font-bold text-gray-800">Panel del Instructor</h2>
+        <button onclick="openCourseEditor()" class="bg-uleam-red hover:bg-uleam-redHover text-white px-4 py-2 rounded-lg text-sm font-bold shadow flex items-center gap-2">
+            <i class="fa-solid fa-plus"></i> Crear nuevo curso
+        </button>
+    </div>
+
+    <!-- Instructor Tabs (Creados / Borradores) -->
+    <div class="flex space-x-4 border-b border-gray-200">
+        <button onclick="switchInstructorTab('creados')" id="inst-tab-creados" class="pb-2 font-bold text-uleam-red border-b-2 border-uleam-red">Cursos Creados / Publicados</button>
+        <button onclick="switchInstructorTab('borradores')" id="inst-tab-borradores" class="pb-2 font-bold text-gray-500 hover:text-gray-700">Borradores</button>
+    </div>
+
+    <!-- List of Instructor Courses -->
+    <div id="instructor-courses-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered dynamically -->
+    </div>
+</section>

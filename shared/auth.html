@@ -1,0 +1,111 @@
+<!-- ==================== VISTA: AUTENTICACIÓN ==================== -->
+<section id="view-auth" class="min-h-[80vh] flex flex-col justify-center items-center">
+    <!-- Login Box -->
+    <div id="auth-login-card" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 w-full max-w-md">
+        <div class="text-center mb-6">
+            <img src="assets/img/logo-uleam.png" alt="Logo ULEAM" class="mx-auto w-24 h-24 object-contain mb-3">
+            <h2 class="text-xl font-bold text-uleam-red uppercase tracking-wide">ULEAM Capacitaciones</h2>
+            <p class="text-xs text-gray-500 mt-1">Ingresa tus credenciales institucionales</p>
+        </div>
+
+        <form id="form-login" onsubmit="handleLogin(event)" class="space-y-4">
+            <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1">Correo institucional</label>
+                <input type="email" id="login-email" required placeholder="ejemplo@uleam.edu.ec"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-uleam-red focus:border-transparent text-sm">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1">Contraseña</label>
+                <div class="relative">
+                    <input type="password" id="login-password" required placeholder="••••••••"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-uleam-red focus:border-transparent text-sm">
+                    <button type="button" onclick="togglePasswordVisibility('login-password')" class="absolute right-3 top-2.5 text-gray-400 hover:text-gray-600">
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+            <button type="submit" class="w-full bg-uleam-red hover:bg-uleam-redHover text-white font-bold py-2.5 rounded-md shadow transition duration-150 text-sm">
+                Ingresar
+            </button>
+            <div class="text-center mt-3">
+                <button type="button" onclick="showAuthStep('recovery-1')" class="text-xs text-uleam-red hover:underline font-medium">
+                    ¿Olvidaste tu contraseña?
+                </button>
+            </div>
+        </form>
+
+        <!-- Quick Presets for University Evaluation Demo -->
+        <div class="mt-6 pt-4 border-t border-gray-200">
+            <p class="text-[11px] text-gray-400 font-semibold mb-2 text-center uppercase tracking-wider">Acceso Rápido de Prueba (Demo)</p>
+            <div class="grid grid-cols-3 gap-2">
+                <button onclick="loginPreset('estudiante')" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs py-1.5 px-2 rounded font-medium border text-center">Estudiante</button>
+                <button onclick="loginPreset('instructor')" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs py-1.5 px-2 rounded font-medium border text-center">Instructor</button>
+                <button onclick="loginPreset('admin')" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs py-1.5 px-2 rounded font-medium border text-center">Admin</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password Recovery Step 1: Send/Verify Code -->
+    <div id="auth-recovery-1" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 w-full max-w-md hidden">
+        <div class="text-center mb-6">
+            <h2 class="text-xl font-bold text-uleam-red">Recuperar contraseña</h2>
+            <p class="text-xs text-gray-600 mt-2 px-2">
+                Le hemos enviado un código de recuperación a su correo institucional, si no le llegó, haga clic en reenviar.
+            </p>
+        </div>
+        <div class="space-y-4">
+            <button onclick="resendCode()" class="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 rounded text-xs transition">
+                <i class="fa-solid fa-arrows-rotate mr-1"></i> Reenviar código
+            </button>
+            <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1">Código de recuperación</label>
+                <input type="text" id="recovery-code-input" placeholder="Ej: 123456"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-uleam-red text-center text-lg font-mono tracking-widest">
+            </div>
+            <button onclick="validateRecoveryCode()" class="w-full bg-uleam-red hover:bg-uleam-redHover text-white font-bold py-2.5 rounded-md text-sm transition">
+                Validar
+            </button>
+            <div class="text-center">
+                <button onclick="showAuthStep('login')" class="text-xs text-uleam-red hover:underline">
+                    Volver a inicio de sesión
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password Recovery Step 2: New Password -->
+    <div id="auth-recovery-2" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 w-full max-w-md hidden">
+        <div class="text-center mb-6">
+            <h2 class="text-xl font-bold text-uleam-red">Recuperar contraseña</h2>
+            <p class="text-xs text-gray-500 mt-1">Establezca su nueva clave de acceso</p>
+        </div>
+        <form onsubmit="handleResetPassword(event)" class="space-y-4">
+            <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1">Nueva contraseña</label>
+                <div class="relative">
+                    <input type="password" id="new-pass" required placeholder="••••••••" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm">
+                    <button type="button" onclick="togglePasswordVisibility('new-pass')" class="absolute right-3 top-2.5 text-gray-400">
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1">Confirmar contraseña</label>
+                <div class="relative">
+                    <input type="password" id="confirm-pass" required placeholder="••••••••" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm">
+                    <button type="button" onclick="togglePasswordVisibility('confirm-pass')" class="absolute right-3 top-2.5 text-gray-400">
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+            <button type="submit" class="w-full bg-uleam-red hover:bg-uleam-redHover text-white font-bold py-2.5 rounded-md text-sm transition">
+                Cambiar contraseña
+            </button>
+            <div class="text-center">
+                <button type="button" onclick="showAuthStep('login')" class="text-xs text-uleam-red hover:underline">
+                    Volver a inicio de sesión
+                </button>
+            </div>
+        </form>
+    </div>
+</section>

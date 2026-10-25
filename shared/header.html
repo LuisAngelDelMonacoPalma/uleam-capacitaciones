@@ -1,0 +1,47 @@
+<!-- TOP HEADER / NAVBAR (se muestra al autenticarse) -->
+<header id="main-header" class="bg-white border-b-2 border-uleam-red shadow-sm sticky top-0 z-30 hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <!-- Brand Logo -->
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateToDashboard()">
+            <!-- Logo ULEAM -->
+            <img src="assets/img/logo-uleam.png" alt="Logo ULEAM" class="w-11 h-11 object-contain">
+            <div>
+                <h1 class="text-lg font-bold text-uleam-red leading-tight">Uleam</h1>
+                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Capacitaciones</p>
+            </div>
+        </div>
+
+        <!-- Role Selector Quick Switcher (Demo Feature) -->
+        <div class="hidden md:flex items-center space-x-2 bg-gray-100 p-1.5 rounded-lg border border-gray-200">
+            <span class="text-xs font-semibold text-gray-500 px-1">Simular Rol:</span>
+            <button onclick="switchRole('estudiante')" id="role-btn-estudiante" class="px-2.5 py-1 text-xs font-medium rounded transition">Estudiante</button>
+            <button onclick="switchRole('instructor')" id="role-btn-instructor" class="px-2.5 py-1 text-xs font-medium rounded transition">Instructor</button>
+            <button onclick="switchRole('admin')" id="role-btn-admin" class="px-2.5 py-1 text-xs font-medium rounded transition">Administrador</button>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="flex items-center space-x-4">
+            <nav id="nav-links" class="flex items-center space-x-3 text-sm font-medium">
+                <!-- Dynamic per role -->
+            </nav>
+
+            <!-- Notifications Button -->
+            <button onclick="toggleNotifications()" class="relative p-2 text-gray-600 hover:text-uleam-red transition rounded-full hover:bg-gray-100">
+                <i class="fa-regular fa-bell text-lg"></i>
+                <span id="notif-badge" class="absolute top-1 right-1 w-2.5 h-2.5 bg-uleam-red rounded-full hidden"></span>
+            </button>
+
+            <!-- User Profile Trigger -->
+            <button onclick="openProfileModal()" class="flex items-center space-x-2 p-1 rounded-full hover:bg-gray-100 border border-gray-200">
+                <img id="nav-avatar" src="https://placehold.co/100x100/C62828/ffffff?text=U" class="w-8 h-8 rounded-full object-cover" alt="User">
+                <span id="nav-username" class="text-xs font-bold text-gray-700 hidden sm:inline-block pr-2">Usuario</span>
+            </button>
+
+            <!-- Logout Button -->
+            <button onclick="confirmLogout()" class="text-xs text-uleam-red hover:underline font-semibold flex items-center gap-1">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="hidden sm:inline">Cerrar sesión</span>
+            </button>
+        </div>
+    </div>
+</header>

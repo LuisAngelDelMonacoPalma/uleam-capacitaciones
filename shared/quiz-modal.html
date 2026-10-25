@@ -1,0 +1,54 @@
+<!-- Modal: Evaluación / cuestionario -->
+<div id="modal-quiz" class="fixed inset-0 modal-backdrop z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full p-6 space-y-6 border border-gray-200">
+        <!-- Quiz Intro Screen -->
+        <div id="quiz-screen-intro" class="space-y-4 text-center">
+            <h3 id="quiz-intro-title" class="text-xl font-bold text-uleam-red">Evaluación 1</h3>
+            <div class="bg-gray-50 p-4 rounded-lg border text-sm text-left space-y-2">
+                <p><strong>Preguntas:</strong> <span id="quiz-intro-count">10</span></p>
+                <p><strong>Tiempo límite:</strong> <span id="quiz-intro-time">15 minutos</span></p>
+                <p><strong>Mejor calificación:</strong> <span id="quiz-intro-score">0/10</span></p>
+            </div>
+            <div class="flex justify-center gap-3">
+                <button onclick="closeQuizModal()" class="px-4 py-2 border rounded-lg text-xs font-bold">Cancelar</button>
+                <button onclick="startQuizTimerAndQuestions()" class="px-6 py-2 bg-uleam-red hover:bg-uleam-redHover text-white text-xs font-bold rounded-lg shadow">Comenzar intento</button>
+            </div>
+        </div>
+
+        <!-- Quiz Questions Screen -->
+        <div id="quiz-screen-questions" class="space-y-4 hidden">
+            <div class="flex justify-between items-center border-b pb-3">
+                <span id="quiz-question-counter" class="text-xs font-bold text-gray-500">Pregunta 1 de 10</span>
+                <span class="text-xs font-bold text-uleam-red bg-red-50 px-2.5 py-1 rounded-full border border-red-200">
+                    <i class="fa-regular fa-clock mr-1"></i> <span id="quiz-timer-display">15:00</span>
+                </span>
+            </div>
+
+            <div id="quiz-question-box" class="space-y-3">
+                <h4 id="quiz-question-text" class="font-bold text-base text-gray-800">¿Para qué sirve '=='?</h4>
+                <div id="quiz-options-list" class="space-y-2">
+                    <!-- Radio options rendered here -->
+                </div>
+            </div>
+
+            <div class="flex justify-between pt-4 border-t">
+                <button id="btn-quiz-prev" onclick="navigateQuizQuestion(-1)" class="px-4 py-2 bg-gray-200 text-gray-700 text-xs font-bold rounded-lg disabled:opacity-50">Anterior</button>
+                <button id="btn-quiz-next" onclick="navigateQuizQuestion(1)" class="px-4 py-2 bg-uleam-red text-white text-xs font-bold rounded-lg">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Quiz Result Screen -->
+        <div id="quiz-screen-results" class="text-center space-y-4 hidden">
+            <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto text-2xl">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800">Evaluación Terminada</h3>
+            <div class="bg-gray-50 p-4 rounded-lg border text-sm space-y-1">
+                <p class="text-gray-600">Calificación obtenida:</p>
+                <p id="quiz-final-score" class="text-3xl font-extrabold text-uleam-red">8/10</p>
+                <p id="quiz-final-status" class="text-xs font-bold text-uleam-green uppercase tracking-wider pt-2">Aprobado</p>
+            </div>
+            <button onclick="finishQuiz()" class="px-6 py-2 bg-uleam-red hover:bg-uleam-redHover text-white text-xs font-bold rounded-lg shadow">Aceptar y Continuar</button>
+        </div>
+    </div>
+</div>

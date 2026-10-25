@@ -1,0 +1,75 @@
+<!-- Modal: Perfil de usuario / editor -->
+<div id="modal-profile" class="fixed inset-0 modal-backdrop z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden border border-gray-200">
+        <div class="bg-uleam-red text-white p-4 flex justify-between items-center">
+            <h3 class="font-bold text-base flex items-center gap-2">
+                <i class="fa-solid fa-user-gear"></i> Perfil de Usuario / Editor
+            </h3>
+            <button onclick="closeProfileModal()" class="text-white hover:text-gray-200 text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <form onsubmit="handleSaveProfile(event)" class="p-6 space-y-4 max-h-[80vh] overflow-y-auto text-sm">
+            <div class="flex items-center space-x-4">
+                <img id="profile-edit-avatar" src="https://placehold.co/100x100/C62828/ffffff?text=U" class="w-16 h-16 rounded-full border-2 border-uleam-red object-cover">
+                <div>
+                    <h4 id="profile-edit-name-display" class="font-bold text-base text-gray-800">Usuario</h4>
+                    <span id="profile-edit-role-badge" class="bg-gray-100 text-gray-700 text-xs px-2 py-0.5 rounded font-semibold uppercase">Estudiante</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">Nombre Completo</label>
+                    <input type="text" id="prof-name" required class="w-full px-3 py-1.5 border rounded">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">Correo institucional</label>
+                    <input type="email" id="prof-email" required class="w-full px-3 py-1.5 border rounded">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">Teléfono</label>
+                    <input type="text" id="prof-phone" class="w-full px-3 py-1.5 border rounded">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">Cédula</label>
+                    <input type="text" id="prof-dni" class="w-full px-3 py-1.5 border rounded">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">País de residencia</label>
+                    <input type="text" id="prof-country" class="w-full px-3 py-1.5 border rounded">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">Nacionalidad</label>
+                    <input type="text" id="prof-nationality" class="w-full px-3 py-1.5 border rounded">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">Dirección</label>
+                    <input type="text" id="prof-address" class="w-full px-3 py-1.5 border rounded">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">Correo personal</label>
+                    <input type="email" id="prof-personal-email" class="w-full px-3 py-1.5 border rounded">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">Fecha de nacimiento</label>
+                    <input type="date" id="prof-dob" oninput="validateBirthDate()" class="w-full px-3 py-1.5 border rounded">
+                    <p id="prof-dob-error" class="hidden text-xs text-red-600 mt-1"></p>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">Género</label>
+                    <select id="prof-gender" class="w-full px-3 py-1.5 border rounded bg-white">
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="flex justify-end gap-2 pt-4 border-t">
+                <button type="button" onclick="closeProfileModal()" class="px-4 py-2 border text-gray-600 rounded text-xs font-bold">Cancelar</button>
+                <button type="submit" class="px-4 py-2 bg-uleam-red hover:bg-uleam-redHover text-white rounded text-xs font-bold shadow">Guardar cambios</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<!-- ==================== VISTA: PANEL DEL ADMINISTRADOR ==================== -->
+<section id="view-admin" class="space-y-8 hidden">
+    <!-- Stats Bar -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 text-center">
+            <p class="text-xs font-bold text-gray-500 uppercase tracking-wider">Usuarios Activos</p>
+            <p id="stat-active-users" class="text-3xl font-extrabold text-uleam-red mt-1">1,248</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 text-center">
+            <p class="text-xs font-bold text-gray-500 uppercase tracking-wider">Cursos Publicados</p>
+            <p id="stat-published-courses" class="text-3xl font-extrabold text-uleam-red mt-1">37</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 text-center">
+            <p class="text-xs font-bold text-gray-500 uppercase tracking-wider">Certificados Emitidos</p>
+            <p id="stat-certificates-issued" class="text-3xl font-extrabold text-uleam-red mt-1">572</p>
+        </div>
+    </div>
+
+    <!-- Section: Platform Courses Approval & Management -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <h3 class="text-lg font-bold text-gray-800">Cursos en la plataforma</h3>
+            <div class="flex items-center space-x-2 w-full sm:w-auto">
+                <input type="text" id="admin-course-search" oninput="renderAdminCourses()" placeholder="Buscar curso..." class="px-3 py-1.5 border rounded-lg text-sm w-full sm:w-64">
+                <select id="admin-course-filter" onchange="renderAdminCourses()" class="px-3 py-1.5 border rounded-lg text-sm bg-white">
+                    <option value="ALL">Todos los estados</option>
+                    <option value="PUBLICADO">Publicados</option>
+                    <option value="PENDIENTE">Pendientes de Aprobación</option>
+                    <option value="DESHABILITADO">Deshabilitados</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="admin-courses-list" class="space-y-3">
+            <!-- Dynamic rendering -->
+        </div>
+    </div>
+
+    <!-- Section: Platform Users Management -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
+        <div class="flex justify-between items-center">
+            <h3 class="text-lg font-bold text-gray-800">Usuarios</h3>
+            <input type="text" id="admin-user-search" oninput="renderAdminUsers()" placeholder="Buscar usuario..." class="px-3 py-1.5 border rounded-lg text-sm w-64">
+        </div>
+
+        <div id="admin-users-list" class="divide-y divide-gray-100">
+            <!-- Dynamic rendering -->
+        </div>
+    </div>
+
+    <!-- Section: Admin Drafts / Create Course -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
+        <div class="flex justify-between items-center border-b pb-3">
+            <h3 class="text-lg font-bold text-gray-800">Mis cursos (Administrador)</h3>
+            <button onclick="openCourseEditor(null, true)" class="bg-uleam-red hover:bg-uleam-redHover text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow">
+                <i class="fa-solid fa-plus"></i> Crear nuevo curso
+            </button>
+        </div>
+        <div id="admin-my-courses-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Dynamic rendering -->
+        </div>
+    </div>
+</section>

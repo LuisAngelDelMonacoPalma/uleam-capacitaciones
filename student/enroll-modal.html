@@ -1,0 +1,22 @@
+<!-- Modal: Detalle del curso e inscripción (catálogo del estudiante) -->
+<div id="modal-course-enroll" class="fixed inset-0 modal-backdrop z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full overflow-hidden border border-gray-200 space-y-4 p-6">
+        <div class="flex justify-between items-start border-b pb-3">
+            <h3 id="enroll-modal-title" class="text-xl font-bold text-uleam-red">Nombre del Curso</h3>
+            <button onclick="closeEnrollModal()" class="text-gray-400 hover:text-gray-600 text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <img id="enroll-modal-img" src="" class="w-full h-40 object-cover rounded-lg border">
+        <div class="space-y-2 text-sm text-gray-600">
+            <p><strong>Descripción:</strong> <span id="enroll-modal-desc">...</span></p>
+            <p><strong>Categoría:</strong> <span id="enroll-modal-cat">...</span></p>
+            <p><strong>Número de módulos:</strong> <span id="enroll-modal-modules">0</span></p>
+            <p><strong>Docente:</strong> <span id="enroll-modal-instructor">...</span></p>
+        </div>
+        <div class="pt-4 border-t flex justify-end gap-2">
+            <button onclick="closeEnrollModal()" class="px-4 py-2 border rounded-lg text-xs font-bold text-gray-600">Cancelar</button>
+            <button id="btn-confirm-enrollment" onclick="confirmEnrollment()" class="px-5 py-2 bg-uleam-red hover:bg-uleam-redHover text-white rounded-lg text-xs font-bold shadow">Inscribirme</button>
+        </div>
+    </div>
+</div>

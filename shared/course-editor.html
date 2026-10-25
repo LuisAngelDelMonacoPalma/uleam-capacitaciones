@@ -1,0 +1,76 @@
+<!-- ==================== VISTA: EDITOR DE CURSOS (INSTRUCTOR / ADMIN) ==================== -->
+<section id="view-editor" class="space-y-6 hidden">
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 space-y-6">
+        <div class="flex justify-between items-center border-b pb-4">
+            <h2 class="text-xl font-bold text-uleam-red flex items-center gap-2">
+                <i class="fa-solid fa-pen-to-square"></i>
+                <span>Crear / Editar curso</span>
+            </h2>
+            <div class="flex gap-2">
+                <button onclick="saveCourseDraft()" class="bg-gray-600 hover:bg-gray-700 text-white px-3 py-1.5 rounded text-xs font-bold">
+                    Guardar Borrador
+                </button>
+                <button id="btn-editor-publish" onclick="submitCourseForPublish()" class="bg-uleam-red hover:bg-uleam-redHover text-white px-3 py-1.5 rounded text-xs font-bold shadow">
+                    Publicar / Solicitar Aprobación
+                </button>
+                <button id="btn-editor-disable" onclick="requestDisableCourse()" class="bg-red-800 hover:bg-red-900 text-white px-3 py-1.5 rounded text-xs font-bold hidden">
+                    Deshabilitar
+                </button>
+            </div>
+        </div>
+
+        <form id="course-editor-form" class="space-y-4">
+            <input type="hidden" id="edit-course-id">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Título del curso</label>
+                    <input type="text" id="edit-course-title" required class="w-full px-3 py-2 border rounded-md text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Categoría</label>
+                    <select id="edit-course-category" class="w-full px-3 py-2 border rounded-md text-sm bg-white">
+                        <option value="Programación">Programación</option>
+                        <option value="Redes">Redes y Telecomunicaciones</option>
+                        <option value="Diseño">Diseño y Arquitectura</option>
+                        <option value="General">Capacitación General</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="admin-instructor-assignment-field" class="hidden">
+                <label class="block text-xs font-bold text-gray-700 mb-1">Instructor Asignado</label>
+                <select id="edit-course-instructor" class="w-full px-3 py-2 border rounded-md text-sm bg-white">
+                    <!-- Populated with instructors -->
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1">Descripción</label>
+                <textarea id="edit-course-description" rows="3" class="w-full px-3 py-2 border rounded-md text-sm" placeholder="Descripción amplia del programa de capacitación..."></textarea>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1">Portada del curso (Imagen)</label>
+                <div class="flex items-center gap-4">
+                    <img id="edit-course-cover-preview" src="assets/img/portada-default.webp" alt="Portada por defecto" class="w-40 h-24 object-cover rounded-md border">
+                    <p class="text-xs text-gray-500">Se usa la portada por defecto. La carga de portadas personalizadas se habilitará cuando exista una base de datos.</p>
+                </div>
+            </div>
+        </form>
+
+        <!-- Modules Building Section -->
+        <div class="border-t pt-4 space-y-4">
+            <div class="flex justify-between items-center">
+                <h3 class="text-md font-bold text-gray-800">Módulos del Curso</h3>
+                <button onclick="addNewModuleToEditor()" class="bg-uleam-red hover:bg-uleam-redHover text-white px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1">
+                    <i class="fa-solid fa-plus"></i> Agregar módulo
+                </button>
+            </div>
+
+            <div id="editor-modules-container" class="space-y-4">
+                <!-- Module blocks rendered here -->
+            </div>
+        </div>
+    </div>
+</section>

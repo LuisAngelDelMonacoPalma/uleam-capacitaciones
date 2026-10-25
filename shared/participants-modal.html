@@ -1,0 +1,14 @@
+<!-- Modal: Participantes inscritos (Instructor / Admin) -->
+<div id="modal-participants" class="fixed inset-0 modal-backdrop z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 space-y-4 border border-gray-200">
+        <div class="flex justify-between items-center border-b pb-3">
+            <h3 class="font-bold text-lg text-gray-800">Participantes Inscritos</h3>
+            <button onclick="closeParticipantsModal()" class="text-gray-400 hover:text-gray-600">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div id="participants-list-container" class="space-y-2 max-h-80 overflow-y-auto divide-y">
+            <!-- Participants list rendered here -->
+        </div>
+    </div>
+</div>

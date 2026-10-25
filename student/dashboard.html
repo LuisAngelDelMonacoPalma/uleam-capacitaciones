@@ -1,0 +1,46 @@
+<!-- ==================== VISTA: PANEL DEL ESTUDIANTE ==================== -->
+<section id="view-student" class="space-y-6 hidden">
+    <!-- Tab Header: Mis Cursos vs Catalogo -->
+    <div id="student-main-tabs" class="border-b border-gray-300 flex space-x-6 pb-2">
+        <button onclick="switchStudentTab('mis-cursos')" id="tab-btn-mis-cursos" class="font-bold text-lg text-uleam-red border-b-2 border-uleam-red pb-1">Mis cursos</button>
+        <button onclick="switchStudentTab('catalogo')" id="tab-btn-catalogo" class="font-bold text-lg text-gray-500 hover:text-gray-800 pb-1">Catálogo de Cursos</button>
+    </div>
+
+    <!-- Subtab: Mis Cursos (En curso / Completados) -->
+    <div id="student-section-mis-cursos" class="space-y-4">
+        <div class="flex space-x-3 bg-gray-200 p-1 rounded-lg w-fit text-sm">
+            <button onclick="switchEnrolledSubtab('en-curso')" id="subtab-en-curso" class="px-4 py-1.5 rounded-md font-semibold bg-white text-gray-800 shadow-sm">En curso</button>
+            <button onclick="switchEnrolledSubtab('completados')" id="subtab-completados" class="px-4 py-1.5 rounded-md font-semibold text-gray-600 hover:text-gray-900">Completados</button>
+        </div>
+
+        <!-- Course Cards List -->
+        <div id="student-courses-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Populated via JS -->
+        </div>
+    </div>
+
+    <!-- Subtab: Catálogo -->
+    <div id="student-section-catalogo" class="space-y-4 hidden">
+        <div class="flex flex-col sm:flex-row gap-4 justify-between items-center bg-white p-4 rounded-xl border shadow-sm">
+            <div class="relative w-full sm:w-80">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-400"></i>
+                <input type="text" id="catalog-search" oninput="renderStudentCatalog()" placeholder="Buscar curso..."
+                    class="w-full pl-9 pr-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-uleam-red">
+            </div>
+            <div class="flex items-center space-x-2 w-full sm:w-auto">
+                <label class="text-xs font-bold text-gray-600 uppercase">Categoría:</label>
+                <select id="catalog-category-filter" onchange="renderStudentCatalog()" class="border rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-uleam-red">
+                    <option value="ALL">Todas las categorías</option>
+                    <option value="Programación">Programación</option>
+                    <option value="Redes">Redes y Telecomunicaciones</option>
+                    <option value="Diseño">Diseño y Arquitectura</option>
+                    <option value="General">Capacitación General</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="catalog-courses-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Populated via JS -->
+        </div>
+    </div>
+</section>
